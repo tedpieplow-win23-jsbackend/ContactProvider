@@ -5,5 +5,5 @@ namespace ContactProvider.Data;
 
 public class DataContext(DbContextOptions<DataContext> options) : DbContext(options)
 {
-    public virtual DbSet<ContactEntity> Contacts { get; set; }
+    public DbSet<ContactEntity> Contacts { get; set; }
 }

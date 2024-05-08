@@ -8,10 +8,10 @@ using System.Linq.Expressions;
 
 namespace ContactProvider.Repositories;
 
-public class ContactRepository(DataContext context, ILogger logger)
+public class ContactRepository(DataContext context, ILogger<ContactRepository> logger)
 {
     private readonly DataContext _context = context;
-    private readonly ILogger _logger = logger;
+    private readonly ILogger<ContactRepository> _logger = logger;
 
     public async Task<ResponseResult> CreateAsync(ContactEntity entity)
     {
