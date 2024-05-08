@@ -3,7 +3,6 @@ using ContactProvider.Helpers;
 using ContactProvider.Models;
 using ContactProvider.Repositories;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System.Text.Json;
 
 namespace ContactProvider.Services;
@@ -18,7 +17,7 @@ public class ContactService(ContactRepository repo, ContactFactory factory, ILog
     {
         try
         {
-            var contactModel = JsonConvert.DeserializeObject<ContactModel>(body);
+            var contactModel = JsonSerializer.Deserialize<ContactModel>(body);
             var validator = new ContactValidator();
             var validationResult = validator.Validate(contactModel!);
             if (validationResult.IsValid)
